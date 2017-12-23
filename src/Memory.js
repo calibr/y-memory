@@ -21,6 +21,11 @@ function extend (Y) {
       this.os = new BufferedStore()
       this.ds = new Store()
       this.ss = new BufferedStore()
+      let store = this
+      this.requestTransaction(function * () {
+        // custom code, just set userId that is passed in the options
+        store.setUserId(opts.userId)
+      })
     }
     logTable () {
       var self = this
